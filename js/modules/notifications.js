@@ -13,7 +13,7 @@ export function saveNotifications() {
 
 export function addNotification(title, body, type) {
     const notif = {
-        id: Date.now(),
+        id: Date.now() + Math.random(),
         title,
         body,
         type: type || 'info',
