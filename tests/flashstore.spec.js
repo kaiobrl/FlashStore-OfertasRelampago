@@ -1,7 +1,7 @@
 // @ts-check
 const { test, expect } = process.env.COVERAGE ? require('./coverage') : require('@playwright/test');
 
-const PAGE = '/landing_page_mobile.html';
+const PAGE = '/index.html';
 
 test.describe('FlashStore PWA', () => {
 
