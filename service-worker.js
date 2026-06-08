@@ -1,28 +1,28 @@
-const CACHE_NAME = 'flashstore-v3';
-const STATIC_CACHE = 'flashstore-static-v3';
+const CACHE_NAME = 'flashstore-v4';
+const STATIC_CACHE = 'flashstore-static-v4';
 const IMAGE_CACHE = 'flashstore-images-v1';
 
-// Assets to pre-cache on install
+// Assets to pre-cache on install - Using relative paths for better portability
 const PRECACHE_URLS = [
-    '/index.html',
-    '/app.css',
-    '/js/main.js',
-    '/js/modules/cart.js',
-    '/js/modules/constants.js',
-    '/js/modules/countdown.js',
-    '/js/modules/images.js',
-    '/js/modules/notifications.js',
-    '/js/modules/pwa-notifications.js',
-    '/js/modules/pwa.js',
-    '/js/modules/renderers.js',
-    '/js/modules/reveal.js',
-    '/js/modules/theme.js',
-    '/js/modules/utils.js',
-    '/theme-init.js',
-    '/manifest.json',
-    '/icon-192.svg',
-    '/icon-512.svg',
-    '/offline.html'
+    'index.html',
+    'app.css',
+    'js/main.js',
+    'js/modules/cart.js',
+    'js/modules/constants.js',
+    'js/modules/countdown.js',
+    'js/modules/images.js',
+    'js/modules/notifications.js',
+    'js/modules/pwa-notifications.js',
+    'js/modules/pwa.js',
+    'js/modules/renderers.js',
+    'js/modules/reveal.js',
+    'js/modules/theme.js',
+    'js/modules/utils.js',
+    'theme-init.js',
+    'manifest.json',
+    'icon-192.svg',
+    'icon-512.svg',
+    'offline.html'
 ];
 
 // Install: pre-cache critical assets
