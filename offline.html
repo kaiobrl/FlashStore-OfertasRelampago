@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#FF5722">
+    <meta name="color-scheme" content="light dark">
+    <title>FlashStore - Ofertas Relâmpago</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #f5f5f5;
+            --surface: #ffffff;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+        }
+
+        html.dark {
+            --bg: #0a0a14;
+            --surface: #1a1a2e;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+        }
+
+        body {
+            min-height: 100dvh;
+            background: var(--bg);
+            font-family: -apple-system, 'SF Pro Display', system-ui, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            transition: background .3s, color .3s;
+        }
+
+        .offline-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #FF5722, #FF9800);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 24px rgba(255, 87, 34, .25);
+        }
+
+        .offline-icon svg {
+            width: 56px;
+            height: 56px;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: .5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: .375rem;
+            max-width: 280px;
+        }
+
+        .offline-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+            max-width: 280px;
+        }
+
+        .offline-features li {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            padding: .75rem 1rem;
+            background: var(--surface);
+            border-radius: 10px;
+            margin-bottom: .5rem;
+            font-size: .875rem;
+            font-weight: 500;
+        }
+
+        .offline-features li svg {
+            width: 20px;
+            height: 20px;
+            color: #22c55e;
+            flex-shrink: 0;
+        }
+
+        .retry-btn {
+            margin-top: 1rem;
+            background: linear-gradient(135deg, #FF5722, #FF9800);
+            color: #fff;
+            border: none;
+            padding: .875rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform .15s, box-shadow .2s;
+            box-shadow: 0 4px 12px rgba(255, 87, 34, .3);
+        }
+
+        .retry-btn:active {
+            transform: scale(.97);
+        }
+
+        .retry-btn:focus-visible {
+            outline: 2px solid #FF5722;
+            outline-offset: 2px;
+        }
+
+        .cached-info {
+            margin-top: 1.5rem;
+            font-size: .75rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="1" y1="1" x2="23" y2="23"/>
+            <path d="M16.72 11.06A10.94 10.94 0 0119 12.55"/>
+            <path d="M5 12.55a10.94 10.94 0 015.17-2.39"/>
+            <path d="M10.71 5.05A16 16 0 0122.56 9"/>
+            <path d="M1.42 9a15.91 15.91 0 014.7-2.88"/>
+            <path d="M8.53 16.11a6 6 0 016.95 0"/>
+            <line x1="12" y1="20" x2="12.01" y2="20"/>
+        </svg>
+    </div>
+
+    <h1>Você está offline</h1>
+    <p>Sem conexão com a internet, mas seus dados estão salvos localmente.</p>
+    <p>Conecte-se novamente para continuar comprando.</p>
+
+    <ul class="offline-features">
+        <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            Carrinho preservado offline
+        </li>
+        <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Dados sincronizados ao reconectar
+        </li>
+    </ul>
+
+    <button class="retry-btn" type="button" id="retry-btn">
+        Tentar novamente
+    </button>
+
+    <p class="cached-info">FlashStore PWA • Dados em cache</p>
+    <script>document.getElementById('retry-btn').addEventListener('click',function(){window.location.reload();});</script>
+</body>
+</html>

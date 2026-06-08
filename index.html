@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Monitor Triplo Portátil 14&quot; IPS FHD - Oferta relâmpago com 52% de desconto e frete grátis.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://images.unsplash.com data:; connect-src 'self'; font-src 'self';">
+    <meta name="theme-color" content="#FF5722">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="color-scheme" content="light dark">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon-192.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon-192.svg">
+    <title>FlashStore - Ofertas Relâmpago</title>
+
+    <script src="theme-init.js"></script>
+
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <!-- App Header -->
+    <header class="app-header">
+        <div class="app-header-left">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="header-logo-svg"><path d="M13 2L3 14h9l-1 10 10-12h-9l1-10z"/></svg>
+            <h1>FlashStore</h1>
+        </div>
+        <div class="app-header-actions">
+            <button class="icon-btn" aria-label="Buscar produtos">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+            <button class="icon-btn" id="notif-bell-btn" type="button" aria-label="Notificações">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+                <span class="notif-bell-badge" id="notif-bell-badge">0</span>
+            </button>
+            <button class="icon-btn theme-toggle-header" type="button" aria-label="Alternar tema">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Notification Center Overlay -->
+    <div id="notif-center-overlay" class="notif-center-overlay"></div>
+    <div id="notif-center" class="notif-center" role="dialog" aria-label="Central de notificações">
+        <div class="notif-center-header">
+            <h2>Notificações</h2>
+            <button class="notif-center-close" type="button" id="notif-center-close-btn" aria-label="Fechar notificações">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="notif-center-actions">
+            <button class="notif-center-action-btn" id="notif-mark-all-btn" type="button">Marcar todas como lidas</button>
+            <button class="notif-center-action-btn danger" id="notif-clear-all-btn" type="button">Limpar tudo</button>
+        </div>
+        <div class="notif-center-list" id="notif-center-list"></div>
+    </div>
+
+    <!-- Notification Permission Banner -->
+    <div id="notif-banner" class="notif-banner">
+        <div class="notif-banner-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        </div>
+        <div class="notif-banner-text">
+            <h3>Ative as notificações</h3>
+            <p>Receba alertas de ofertas relâmpago e atualizações do pedido</p>
+        </div>
+        <div class="notif-banner-actions">
+            <button class="notif-btn-allow" type="button" id="notif-allow-btn">Ativar</button>
+            <button class="notif-btn-dismiss" type="button" id="notif-dismiss-btn">Agora não</button>
+        </div>
+    </div>
+
+    <!-- PWA Install Banner -->
+    <div id="install-banner" class="install-banner">
+        <div class="install-banner-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 10 10-12h-9l1-10z"/></svg>
+        </div>
+        <div class="install-banner-text">
+            <h3>Instalar FlashStore</h3>
+            <p>Acesse ofertas instantaneamente pela tela inicial</p>
+        </div>
+        <div class="install-banner-actions">
+            <button class="install-btn" type="button" id="install-accept-btn">Instalar</button>
+            <button class="install-dismiss" type="button" id="install-dismiss-btn" aria-label="Dispensar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Offline Banner -->
+    <div id="offline-banner" class="offline-banner" role="alert" aria-live="assertive">
+        <div class="offline-banner-dot"></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0119 12.55"/><path d="M5 12.55a10.94 10.94 0 015.17-2.39"/><path d="M10.71 5.05A16 16 0 0122.56 9"/><path d="M1.42 9a15.91 15.91 0 014.7-2.88"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+        <span>Você está offline — usando dados em cache</span>
+    </div>
+
+    <!-- Reconnected Banner -->
+    <div id="reconnected-banner" class="reconnected-banner" role="status" aria-live="polite">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        <span>Conexão restaurada!</span>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        <span id="toast-text">Adicionado ao carrinho!</span>
+    </div>
+
+    <!-- App Content -->
+    <div class="app-content">
+        <!-- Tab: Início -->
+        <div class="tab-content active" id="tab-inicio">
+            <div class="hero-banner" data-reveal>
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 10 10-12h-9l1-10z"/></svg>
+                    Oferta Relâmpago
+                </div>
+                <h2 class="hero-title">Monitor Triplo Portátil 14"</h2>
+                <p class="hero-subtitle">Expanda sua produtividade com tela IPS FHD tripla</p>
+                <div class="hero-price">
+                    <span class="hero-price-old">R$ 2.499</span>
+                    <span class="hero-price-current">R$ 1.199</span>
+                </div>
+            </div>
+
+            <div class="countdown-banner delay-01" data-reveal>
+                <div class="countdown-banner-left">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span class="countdown-banner-text">Expira em</span>
+                </div>
+                <div id="countdown-display" class="countdown-banner-timer">17:31</div>
+            </div>
+
+            <div class="quick-actions delay-02" data-reveal>
+                <button class="quick-action" data-action="switch-tab" data-tab="produtos">
+                    <div class="quick-action-icon gradient-orange">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    </div>
+                    <span class="quick-action-label">Ofertas</span>
+                </button>
+                <button class="quick-action">
+                    <div class="quick-action-icon gradient-blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+                    </div>
+                    <span class="quick-action-label">Categorias</span>
+                </button>
+                <button class="quick-action" data-action="switch-tab" data-tab="carrinho">
+                    <div class="quick-action-icon gradient-green">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 00-2-2H4a2 2 0 00-2 2v11a1 1 0 001 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 001-1v-3.65a1 1 0 00-.22-.624l-3.48-4.35A1 1 0 0017.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                    </div>
+                    <span class="quick-action-label">Frete Grátis</span>
+                </button>
+                <button class="quick-action" data-action="switch-tab" data-tab="perfil">
+                    <div class="quick-action-icon gradient-purple">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    </div>
+                    <span class="quick-action-label">Favoritos</span>
+                </button>
+            </div>
+
+            <div class="section-header">
+                <span class="section-title">Mais Vendidos</span>
+                <button class="section-link" data-action="switch-tab" data-tab="produtos">Ver todos</button>
+            </div>
+
+            <div class="product-list" id="product-list-home"></div>
+
+            <div class="trust-section" data-reveal="scale">
+                <h2 class="trust-title">Por que comprar com a gente?</h2>
+                <div class="trust-grid">
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 00-2-2H4a2 2 0 00-2 2v11a1 1 0 001 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 001-1v-3.65a1 1 0 00-.22-.624l-3.48-4.35A1 1 0 0017.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                        <span class="trust-item-label">Entrega Rápida</span>
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        <span class="trust-item-label">Compra Segura</span>
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                        <span class="trust-item-label">Pague Fácil</span>
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <span class="trust-item-label">Oferta Limitada</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Produtos -->
+        <div class="tab-content" id="tab-produtos">
+            <div class="section-header" data-reveal>
+                <span class="section-title">Todos os Produtos</span>
+            </div>
+            <div class="search-filter-bar delay-008" data-reveal>
+                <div class="search-input-wrap">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="search" id="product-search" class="search-input" placeholder="Buscar produtos..." aria-label="Buscar produtos">
+                </div>
+                <div class="sort-bar">
+                    <label for="product-sort" class="sort-label">Ordenar:</label>
+                    <select id="product-sort" class="sort-select">
+                        <option value="default">Destaque</option>
+                        <option value="price-asc">Menor Preço</option>
+                        <option value="price-desc">Maior Preço</option>
+                        <option value="discount">Maior Desconto</option>
+                        <option value="rating">Melhor Avaliação</option>
+                    </select>
+                </div>
+                <div class="filter-chips" id="filter-chips">
+                    <button class="filter-chip active" data-category="todos">Todos</button>
+                    <button class="filter-chip" data-category="monitores">Monitores</button>
+                    <button class="filter-chip" data-category="notebooks">Notebooks</button>
+                    <button class="filter-chip" data-category="perifericos">Periféricos</button>
+                </div>
+            </div>
+            <div class="product-grid" id="product-grid"></div>
+        </div>
+
+        <!-- Tab: Carrinho -->
+        <div class="tab-content" id="tab-carrinho">
+            <div id="cart-content"></div>
+        </div>
+
+        <!-- Tab: Perfil -->
+        <div class="tab-content" id="tab-perfil">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <span class="profile-name">Usuário</span>
+                <span class="profile-email">usuario@email.com</span>
+            </div>
+            <div class="profile-menu">
+                <button class="profile-menu-item">
+                    <div class="profile-menu-icon gradient-orange">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div class="profile-menu-text"><h3>Meus Dados</h3><p>Nome, email e telefone</p></div>
+                    <svg class="profile-menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+                <button class="profile-menu-item">
+                    <div class="profile-menu-icon gradient-blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                    </div>
+                    <div class="profile-menu-text"><h3>Formas de Pagamento</h3><p>Carteiras e cartões</p></div>
+                    <svg class="profile-menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+                <button class="profile-menu-item">
+                    <div class="profile-menu-icon gradient-green">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 00-2-2H4a2 2 0 00-2 2v11a1 1 0 001 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 001-1v-3.65a1 1 0 00-.22-.624l-3.48-4.35A1 1 0 0017.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                    </div>
+                    <div class="profile-menu-text"><h3>Endereços</h3><p>Gerenciar endereços de entrega</p></div>
+                    <svg class="profile-menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+                <button class="profile-menu-item" data-action="toggle-notif-section">
+                    <div class="profile-menu-icon gradient-red">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+                    </div>
+                    <div class="profile-menu-text"><h3>Notificações</h3><p>Gerenciar alertas e push</p></div>
+                    <svg class="profile-menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+                <div id="notif-section" class="notif-section-hidden">
+                    <div class="notif-pref-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+                        <h2>Preferências de Notificação</h2>
+                    </div>
+                    <div class="notif-pref-list" id="notif-prefs-list"></div>
+                    <div class="notif-section-wrapper">
+                        <button class="btn-primary notif-test-btn" data-action="send-test-notification">Testar Notificação</button>
+                    </div>
+                </div>
+                <button class="profile-menu-item">
+                    <div class="profile-menu-icon gradient-purple">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                    </div>
+                    <div class="profile-menu-text"><h3>Configurações</h3><p>Preferências gerais</p></div>
+                    <svg class="profile-menu-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" role="navigation" aria-label="Navegação principal">
+        <button class="nav-item active" data-tab="inicio" data-action="switch-tab" aria-label="Página inicial">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Início</span>
+        </button>
+        <button class="nav-item" data-tab="produtos" data-action="switch-tab" aria-label="Produtos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <span>Produtos</span>
+        </button>
+        <button class="nav-item" data-tab="carrinho" data-action="switch-tab" aria-label="Carrinho">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+            <span>Carrinho</span>
+            <span class="nav-badge" id="cart-badge">0</span>
+        </button>
+        <button class="nav-item" data-tab="perfil" data-action="switch-tab" aria-label="Perfil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Perfil</span>
+        </button>
+    </nav>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

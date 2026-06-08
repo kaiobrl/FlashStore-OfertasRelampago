@@ -1,0 +1,38 @@
+ INFO  Accepting connections at http://localhost:59971
+ HTTP  07/06/2026 22:27:37 ::1 GET /landing_page_mobile.html
+ HTTP  07/06/2026 22:27:37 ::1 Returned 301 in 44 ms
+ HTTP  07/06/2026 22:27:37 ::1 GET /landing_page_mobile
+ HTTP  07/06/2026 22:27:37 ::1 Returned 200 in 16 ms
+ HTTP  07/06/2026 22:27:37 ::1 GET /theme-init.js
+ HTTP  07/06/2026 22:27:37 ::1 Returned 200 in 6 ms
+ HTTP  07/06/2026 22:27:37 ::1 GET /manifest.json
+ HTTP  07/06/2026 22:27:37 ::1 Returned 200 in 5 ms
+ HTTP  07/06/2026 22:27:37 ::1 GET /app.css
+ HTTP  07/06/2026 22:27:37 ::1 GET /app.js
+ HTTP  07/06/2026 22:27:37 ::1 Returned 200 in 9 ms
+ HTTP  07/06/2026 22:27:37 ::1 Returned 200 in 7 ms
+ HTTP  07/06/2026 22:27:37 ::1 GET /icon-192.svg
+ HTTP  07/06/2026 22:27:37 ::1 Returned 200 in 5 ms
+ HTTP  07/06/2026 22:27:37 ::1 GET /icon-192.svg
+ HTTP  07/06/2026 22:27:37 ::1 GET /service-worker.js
+ HTTP  07/06/2026 22:27:37 ::1 Returned 304 in 3 ms
+ HTTP  07/06/2026 22:27:37 ::1 Returned 200 in 6 ms
+ HTTP  07/06/2026 22:27:37 ::1 GET /app.css
+ HTTP  07/06/2026 22:27:37 ::1 GET /app.js
+ HTTP  07/06/2026 22:27:37 ::1 Returned 304 in 4 ms
+ HTTP  07/06/2026 22:27:37 ::1 Returned 304 in 4 ms
+ HTTP  07/06/2026 22:27:37 ::1 GET /landing_page_mobile
+ HTTP  07/06/2026 22:27:37 ::1 Returned 304 in 3 ms
+ HTTP  07/06/2026 22:27:37 ::1 GET /theme-init.js
+ HTTP  07/06/2026 22:27:37 ::1 Returned 304 in 3 ms
+ HTTP  07/06/2026 22:27:37 ::1 GET /manifest.json
+ HTTP  07/06/2026 22:27:37 ::1 GET /icon-192.svg
+ HTTP  07/06/2026 22:27:37 ::1 Returned 304 in 3 ms
+ HTTP  07/06/2026 22:27:37 ::1 Returned 304 in 3 ms
+ HTTP  07/06/2026 22:27:37 ::1 GET /icon-512.svg
+ HTTP  07/06/2026 22:27:37 ::1 Returned 200 in 4 ms
+ HTTP  07/06/2026 22:27:37 ::1 GET /offline.html
+ HTTP  07/06/2026 22:27:37 ::1 Returned 301 in 2 ms
+ HTTP  07/06/2026 22:27:37 ::1 GET /offline
+ HTTP  07/06/2026 22:27:37 ::1 Returned 200 in 5 ms
+^C

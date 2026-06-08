@@ -1,0 +1,26 @@
+{
+  "name": "landing_page_mobile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "service-worker.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:chromium": "npx playwright test --project=chromium",
+    "test:lighthouse": "npx playwright test tests/lighthouse.spec.js --project=chromium",
+    "test:coverage": "npx cross-env COVERAGE=true playwright test --project=chromium tests/flashstore.spec.js && node tests/merge-coverage.js",
+    "serve": "npx serve . -l 3000",
+    "build": "node build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "c8": "^11.0.0",
+    "chrome-launcher": "^1.2.1",
+    "cross-env": "^10.1.0",
+    "lighthouse": "^13.3.0",
+    "serve": "^14.2.6"
+  }
+}
