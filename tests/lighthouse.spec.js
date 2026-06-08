@@ -4,7 +4,7 @@ const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
-const PAGE_PATH = '/landing_page_mobile.html';
+const PAGE_PATH = '/index.html';
 const SITE_URL = `http://localhost:3000${PAGE_PATH}`;
 const PROJECT_ROOT = path.resolve(__dirname, '..');
 const LH_DIR = path.join(PROJECT_ROOT, '.lighthouse-tmp');
