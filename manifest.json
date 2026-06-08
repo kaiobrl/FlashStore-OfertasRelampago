@@ -2,7 +2,7 @@
     "name": "FlashStore - Ofertas Relâmpago",
     "short_name": "FlashStore",
     "description": "Monitor Triplo Portátil 14\" IPS FHD - Oferta relâmpago com 52% de desconto e frete grátis.",
-    "start_url": "/index.html",
+    "start_url": "index.html",
     "display": "standalone",
     "background_color": "#FF5722",
     "theme_color": "#FF5722",
@@ -29,7 +29,7 @@
         {
             "name": "Ver Ofertas",
             "short_name": "Ofertas",
-            "url": "/index.html",
+            "url": "index.html",
             "icons": [{ "src": "icon-192.svg", "sizes": "192x192" }]
         }
     ]

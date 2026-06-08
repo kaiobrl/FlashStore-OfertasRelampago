@@ -77,7 +77,7 @@ self.addEventListener('fetch', (event) => {
                     return caches.match(request)
                         .then((cached) => {
                             if (cached) return cached;
-                            return caches.match('/offline.html');
+                            return caches.match('offline.html');
                         });
                 })
         );

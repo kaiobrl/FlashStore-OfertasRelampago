@@ -7,7 +7,7 @@ let deferredPrompt;
 export function initPWA() {
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/service-worker.js')
+            navigator.serviceWorker.register('service-worker.js')
                 .then((reg) => {
                     console.log('SW registered:', reg.scope);
                     reg.addEventListener('updatefound', () => {
@@ -24,7 +24,9 @@ export function initPWA() {
     }
 
     window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
+        // Não prevenimos o padrão para garantir que o banner seja exibido pelo navegador
+        // conforme sugerido para resolver o erro "Banner não exibido"
+        // e.preventDefault(); 
         deferredPrompt = e;
         setTimeout(showInstallBanner, 5000);
     });
